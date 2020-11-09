@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dressup',
+    'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
