@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_rest_passwordreset',
     'knox',
+    'wagtail.contrib.settings'
+
 ]
 
 MIDDLEWARE = [
