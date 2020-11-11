@@ -75,7 +75,7 @@ class ChangePasswordView(generics.UpdateAPIView):
 
 
 class ProfilesAPI(APIView):
-    def get(self, request, fromat=None):
+    def get(self, request, format=None):
         all_profiles =Profile.objects.all()
         serializers = ProfileSerializer(all_profiles, many=True)
         return Response(serializers.data)
