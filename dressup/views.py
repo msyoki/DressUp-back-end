@@ -2,12 +2,15 @@ from django.shortcuts import render
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer
+from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer,ProfileSerializer
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated 
+from .models import Profile
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 
 # Create your views here.
 # Register API
@@ -68,3 +71,18 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response(response)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class ProfilesAPI(APIView):
+    def get(self, request, format=None):
+        all_profiles =Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
+
+
+@api_view(['GET'])
+def ProfileAPI(request,pk):
+    profile=Profile.objects.get(id=pk)
+    serializers=ProfileSerializer(profile,many=False)
+    return Response(serializers.data)
