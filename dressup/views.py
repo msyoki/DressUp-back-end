@@ -72,7 +72,7 @@ class ChangePasswordView(generics.UpdateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProfilesAPI(APIView):
-    def get(self, request, fromat=None):
+    def get(self, request, format=None):
         all_profiles =Profile.objects.all()
         serializers = ProfileSerializer(all_profiles, many=True)
         return Response(serializers.data)
