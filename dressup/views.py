@@ -2,13 +2,13 @@ from django.shortcuts import render
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer,ProfileSerializer
+from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer,ProfileSerializer,ProductSerializer
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated 
-from .models import Profile
+from .models import Profile,Product
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 
@@ -86,3 +86,11 @@ def ProfileAPI(request,pk):
     profile=Profile.objects.get(id=pk)
     serializers=ProfileSerializer(profile,many=False)
     return Response(serializers.data)
+
+class ProductsAPI(APIView):
+    def get(self, request, fromat=None):
+        all_products =Product.objects.all()
+        serializers = ProductSerializer(all_products, many=True)
+        return Response(serializers.data)
+
+
