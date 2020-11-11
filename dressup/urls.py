@@ -1,4 +1,4 @@
-from .views import RegisterAPI,LoginAPI,ChangePasswordView,ProfilesAPI,ProfileAPI
+from .views import RegisterAPI,LoginAPI,ChangePasswordView,ProfilesAPI,ProfileAPI,blog_views
 from knox import views as knox_views
 from django.urls import path, include
 
@@ -15,5 +15,6 @@ urlpatterns = [
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),
     path('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 ]
+
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

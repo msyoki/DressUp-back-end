@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_rest_passwordreset',
     'knox',
-    'wagtail.contrib.settings'
-
 ]
 
 MIDDLEWARE = [
@@ -138,7 +136,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 ) 
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
