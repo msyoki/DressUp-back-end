@@ -1,1 +1,1 @@
-web: gunicorn DRESSUP.wsgi --log-file -
+web: gunicorn DRESSUP.wsgi 
