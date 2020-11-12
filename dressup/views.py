@@ -91,4 +91,8 @@ class ProductsAPI(APIView):
         serializers = ProductSerializer(all_products, many=True)
         return Response(serializers.data)
 
-
+@api_view(['GET'])
+def search_categoryAPI(request,search_term):
+    products=Product.objects.filter(category__name__icontains = search_term)
+    serializers=ProductSerializer(products,many=True)
+    return Response(serializers.data)

@@ -41,20 +41,32 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-CATEGOGY_CHOICES = (
-    ("Men", "Men"),
-    ("Ladies", "Ladies"),
-    ("Kids", "Kids"),
-)  
+        
+
+
 class Product(models.Model):
     image= models.ImageField(upload_to='productpic/',null=True)
     name=models.CharField(max_length=50)
     price=models.IntegerField()
     stock=models.IntegerField()
     size=models.CharField(max_length=30)
-    category=models.CharField(max_length=30,choices=CATEGOGY_CHOICES)
+    category= models.ForeignKey('Category',on_delete = models.CASCADE)
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
 
+
+
+    def __str__(self):
+        return self.name
+
+
+
+CATEGOGY_CHOICES = (
+    ("Men", "Men"),
+    ("Ladies", "Ladies"),
+    ("Kids", "Kids"),
+)  
+class Category(models.Model):
+    name=models.CharField(max_length=30,choices=CATEGOGY_CHOICES)
 
     def __str__(self):
         return self.name
