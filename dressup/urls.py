@@ -1,4 +1,4 @@
-from .views import RegisterAPI,LoginAPI,ChangePasswordView,ProfilesAPI,ProfileAPI,ProductsAPI
+from .views import RegisterAPI,LoginAPI,ChangePasswordView,ProfilesAPI,ProfileAPI,ProductsAPI,search_categoryAPI
 from knox import views as knox_views
 from django.urls import path, include
 
@@ -8,8 +8,9 @@ from . import views
 
 urlpatterns = [
     path('profiles/', ProfilesAPI.as_view(), name='profiles'),
-    path('profile/<int:pk>/',views.ProfileAPI),
+    path('profile/<int:pk>/',views.ProfileAPI ,name='profile'),
     path('products/', ProductsAPI.as_view(), name='products'),
+    path('search/<str:search_term>/',views.search_categoryAPI ,name='search_category'),
     path('register/', RegisterAPI.as_view(), name='register'),
     path('login/', LoginAPI.as_view(), name='login'),
     path('logout/', knox_views.LogoutView.as_view(), name='logout'),
