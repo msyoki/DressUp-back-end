@@ -72,8 +72,6 @@ class ChangePasswordView(generics.UpdateAPIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
 class ProfilesAPI(APIView):
     def get(self, request, format=None):
         all_profiles =Profile.objects.all()
