@@ -42,13 +42,20 @@ class Profile(models.Model):
         return self.user.username
 
         
+CATEGORY_CHOICES = (
+    ("Men", "Men"),
+    ("Ladies", "Ladies"),
+    ("Kids", "Kids"),
+)
+
+
 class Product(models.Model):
     image= models.ImageField(upload_to='productpic/',null=True)
     name=models.CharField(max_length=50)
     price=models.IntegerField()
     stock=models.IntegerField()
     size=models.CharField(max_length=30)
-    category= models.ForeignKey('Category',on_delete = models.CASCADE)
+    category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
 
 

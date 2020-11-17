@@ -12,6 +12,8 @@ from .models import Profile,Product
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 
+from django.db.models import Q
+
 # Create your views here.
 # Register API
 class RegisterAPI(generics.GenericAPIView):
@@ -93,6 +95,6 @@ class ProductsAPI(APIView):
 
 @api_view(['GET'])
 def search_categoryAPI(request,search_term):
-    products=Product.objects.filter(category__name__icontains = search_term)
+    products=Product.objects.filter(Q(category__icontains=search_term))
     serializers=ProductSerializer(products,many=True)
     return Response(serializers.data)
