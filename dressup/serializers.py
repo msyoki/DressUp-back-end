@@ -42,3 +42,8 @@ class ProductSerializer(serializers.ModelSerializer):
         model=Product
         fields=('image','name','price','stock','size','category')
     
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Product
+        fields=('image','name','price','stock','size','category','username')

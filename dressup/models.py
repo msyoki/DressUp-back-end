@@ -56,7 +56,8 @@ class Product(models.Model):
     stock=models.IntegerField()
     size=models.CharField(max_length=30)
     category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
-    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    username=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    
 
 
 

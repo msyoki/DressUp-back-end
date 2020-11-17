@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer,ProfileSerializer,ProductSerializer
+from .serializers import UserSerializer, RegisterSerializer, ChangePasswordSerializer,ProfileSerializer,ProductSerializer,PostSerializer
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from django.contrib.auth import login
@@ -104,3 +104,23 @@ def search_productAPI(request,pk):
     product=Product.objects.get(id=pk)
     serializers=ProductSerializer(product,many=False)
     return Response(serializers.data)
+
+class productpostAPI(generics.GenericAPIView):
+    serializer_class=PostSerializer
+
+    def post(self,request, format=None):
+        current_user=request.user
+
+        if request.method == 'POST':
+            serializer = PostSerializer(data=request.data)
+            if serializer.is_valid():
+                # serializer.save(commit=False)
+                user=request.user
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+   
+#  fs= form.save(commit=False)
+#         fs.user= request.user
+#         fs.save()
