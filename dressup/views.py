@@ -88,7 +88,7 @@ def ProfileAPI(request,pk):
     return Response(serializers.data)
 
 class ProductsAPI(APIView):
-    def get(self, request, fromat=None):
+    def get(self, request, format=None):
         all_products =Product.objects.all()
         serializers = ProductSerializer(all_products, many=True)
         return Response(serializers.data)
@@ -97,4 +97,10 @@ class ProductsAPI(APIView):
 def search_categoryAPI(request,search_term):
     products=Product.objects.filter(Q(category__icontains=search_term))
     serializers=ProductSerializer(products,many=True)
+    return Response(serializers.data)
+
+@api_view(['GET'])
+def search_productAPI(request,pk):
+    product=Product.objects.get(id=pk)
+    serializers=ProductSerializer(product,many=False)
     return Response(serializers.data)
