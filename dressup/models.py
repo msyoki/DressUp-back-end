@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 from django.db import models
 from cloudinary.models import CloudinaryField
-
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 @receiver(reset_password_token_created)
@@ -56,7 +56,7 @@ class Product(models.Model):
     stock=models.IntegerField()
     size=models.CharField(max_length=30)
     category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
-    username=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    username=models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
     
 
 
@@ -68,3 +68,5 @@ class Product(models.Model):
 
 class Photo(models.Model):
   image = CloudinaryField('image')
+  title = models.CharField(max_length=255,null=True)
+  photo = ImageField(null=True)
