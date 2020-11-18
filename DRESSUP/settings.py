@@ -50,12 +50,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pyuploadcare.dj',
     'dressup',
     'rest_framework',
     'django_rest_passwordreset',
     'knox',
     'corsheaders',
-    'pyuploadcare.dj',
+    
+
 ]
 
 MIDDLEWARE = [
