@@ -65,7 +65,6 @@ class Product(models.Model):
         return self.name
 
 
-
 class Photo(models.Model):
   image = CloudinaryField('image')
   title = models.CharField(max_length=255)
