@@ -50,13 +50,13 @@ CATEGORY_CHOICES = (
 
 
 class Product(models.Model):
-    image= models.ImageField(upload_to='productpic/',null=True)
+    image= models.ImageField(upload_to='productpic/')
     name=models.CharField(max_length=50)
     price=models.IntegerField()
     stock=models.IntegerField()
     size=models.CharField(max_length=30)
     category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
-    username=models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+    username=models.ForeignKey(Profile,on_delete=models.CASCADE)
     
 
 
@@ -68,5 +68,5 @@ class Product(models.Model):
 
 class Photo(models.Model):
   image = CloudinaryField('image')
-  title = models.CharField(max_length=255,null=True)
-  photo = ImageField(null=True)
+  title = models.CharField(max_length=255)
+  photo = ImageField()
