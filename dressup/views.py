@@ -121,6 +121,25 @@ class productpostAPI(generics.GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
    
-#  fs= form.save(commit=False)
-#         fs.user= request.user
-#         fs.save()
+
+# Post Api
+@api_view(['GET', 'POST', 'DELETE'])
+def post_list(request):
+    # GET list of post, POST a new post, DELETE all post
+    return(request,post_detail)
+ 
+@api_view(['GET', 'PUT', 'DELETE'])
+def post_detail(request, pk):
+    # find post by pk (id)
+    try: 
+        post = Post.objects.get(pk=pk) 
+    except Post.DoesNotExist: 
+        return JsonResponse({'message': 'The Post does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+ 
+    # GET / PUT / DELETE post
+    
+        
+@api_view(['GET'])
+def post_list_published(request):
+    # GET all published posts
+    return(request,post_list_published)

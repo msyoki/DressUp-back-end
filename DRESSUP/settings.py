@@ -43,10 +43,10 @@ DATABASES['default'].update(db_from_env)
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
-    'http://localhost:8080',
+    'http://localhost:8000',
 )
 
-CORS_ORIGIN_ALLOW_ALL =  True
+CORS_ORIGIN_ALLOW_ALL =  False
 
 # Application definition
 INSTALLED_APPS = [
@@ -73,7 +73,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 

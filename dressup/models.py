@@ -78,3 +78,9 @@ class Photo(models.Model):
   image = CloudinaryField('image')
   title = models.CharField(max_length=255)
   photo = ImageField()
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=70, blank=False, default='')
+    description = models.CharField(max_length=200,blank=False, default='')
+    published = models.BooleanField(default=False)
