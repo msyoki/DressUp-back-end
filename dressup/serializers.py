@@ -40,5 +40,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=Product
-        fields=('image','name','price','stock','size','category')
+        fields=('image','name','price','stock','size','category','username')
     
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Product
+        fields=('image','name','price','stock','size','category','username')

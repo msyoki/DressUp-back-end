@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pyuploadcare.dj',
     'dressup',
     'rest_framework',
     'django_rest_passwordreset',
@@ -101,7 +102,10 @@ WSGI_APPLICATION = 'DRESSUP.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
+UPLOADCARE = {
+    'pub_key': '53ac0510ef2fc604532c',
+    'secret': '948a3ee6f4dfb84a9fd5',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
