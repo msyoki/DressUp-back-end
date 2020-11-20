@@ -63,17 +63,6 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-CATEGOGY_CHOICES = (
-    ("Men", "Men"),
-    ("Ladies", "Ladies"),
-    ("Kids", "Kids"),
-)  
-class Category(models.Model):
-    name = models.CharField(max_length=30,choices=CATEGOGY_CHOICES)
-
-    def __str__(self):
-        return self.name
-
 class Photo(models.Model):
   image = CloudinaryField('image')
   title = models.CharField(max_length=255)
