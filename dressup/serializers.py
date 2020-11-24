@@ -35,22 +35,15 @@ class ChangePasswordSerializer(serializers.Serializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=Profile
-        fields=('username','first_name','last_name','email','phone','location','profile_pic')
+        fields=('username','first_name','last_name','email','phone','location','profile_pic','id')
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=Product
-        fields=('image','name','price','stock','size','category','username')
+        fields=('image','name','price','stock','size','category','profile')
     
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model=Product
-        fields=('image','name','price','stock','size','category','username')
-
-
-
-class PostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Post
-        fields = ('id','title','description','published')
+        fields=('image','name','price','stock','size','category')

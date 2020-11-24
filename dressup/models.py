@@ -56,21 +56,9 @@ class Product(models.Model):
     stock=models.IntegerField()
     size=models.CharField(max_length=30)
     category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
-    username=models.ForeignKey(Profile,on_delete=models.CASCADE)
-    description = models.CharField(max_length=200,blank=True, default='')
+    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
     
 
-
-    def __str__(self):
-        return self.name
-
-CATEGOGY_CHOICES = (
-    ("Men", "Men"),
-    ("Ladies", "Ladies"),
-    ("Kids", "Kids"),
-)  
-class Category(models.Model):
-    name = models.CharField(max_length=30,choices=CATEGOGY_CHOICES)
 
     def __str__(self):
         return self.name
