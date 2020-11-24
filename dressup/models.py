@@ -69,6 +69,6 @@ class Photo(models.Model):
   photo = ImageField()
 
 
-# class Post(models.Model):
-#     title = models.CharField(max_length=70, blank=False, default='')
-#     published = models.BooleanField(default=False)
+class Post(models.Model):
+    title = models.CharField(max_length=70, blank=False, default='')
+    published = models.BooleanField(default=False)
