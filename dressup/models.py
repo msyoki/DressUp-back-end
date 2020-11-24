@@ -57,6 +57,7 @@ class Product(models.Model):
     size=models.CharField(max_length=30)
     category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
     username=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    description = models.CharField(max_length=200,blank=True, default='')
     
 
 
@@ -80,7 +81,6 @@ class Photo(models.Model):
   photo = ImageField()
 
 
-class Post(models.Model):
-    title = models.CharField(max_length=70, blank=False, default='')
-    description = models.CharField(max_length=200,blank=False, default='')
-    published = models.BooleanField(default=False)
+# class Post(models.Model):
+#     title = models.CharField(max_length=70, blank=False, default='')
+#     published = models.BooleanField(default=False)
