@@ -57,7 +57,7 @@ class Product(models.Model):
     size=models.CharField(max_length=30)
     category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
-    font_size=models.IntegerField()
+    
     is_active = models.IntegerField(default = 1, blank = True, null = True, help_text ='1->Active, 0->Inactive',  choices =( (1, 'Active'), (0, 'Inactive') )) 
     created_on = models.DateTimeField(default = timezone.now) 
     updated_on = models.DateTimeField(default = timezone.now, null = True, blank = True)
