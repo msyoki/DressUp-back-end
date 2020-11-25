@@ -103,8 +103,8 @@ WSGI_APPLICATION = 'DRESSUP.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 UPLOADCARE = {
-    'pub_key': '53ac0510ef2fc604532c',
-    'secret': '948a3ee6f4dfb84a9fd5',
+    'pub_key': '2e78f0c115d478b0fc44',
+    'secret': 'd8c232fdda12ca3003af',
 }
 
 # Password validation
