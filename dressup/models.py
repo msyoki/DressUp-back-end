@@ -5,7 +5,7 @@ from django_rest_passwordreset.signals import reset_password_token_created
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 
-from django.db import models
+from django.utils import timezone
 from cloudinary.models import CloudinaryField
 from pyuploadcare.dj.models import ImageField
 
@@ -57,11 +57,18 @@ class Product(models.Model):
     size=models.CharField(max_length=30)
     category=models.CharField(max_length=30,choices=CATEGORY_CHOICES,default="Men")
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
+
+    is_active = models.IntegerField(default = 1, blank = True, null = True, help_text ='1->Active, 0->Inactive',  choices =( (1, 'Active'), (0, 'Inactive') )) 
+    created_on = models.DateTimeField(default = timezone.now) 
+    updated_on = models.DateTimeField(default = timezone.now, null = True, blank = True)
     
 
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = 'Products'
 
 class Photo(models.Model):
   image = CloudinaryField('image')
