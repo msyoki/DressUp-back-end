@@ -13,9 +13,20 @@ admin.site.site_header = 'DressUp Admin Dashboard'
 admin.site.site_title = 'Welcome to DressUp Admin Dashboard'
 admin.site.index_title = 'DressUp Portal'
 
+TEXT = 'section description'
+
 class ProductAdmin(admin.ModelAdmin):
   list_display = ('name', 'profile', 'category', 'created_on', 'active') 
   list_filter = ('name', 'created_on', 'category')
+  fieldsets = (
+    ('Section 1', {
+        'fields': ('name', 'profile', 'category'),
+        'description': '%s' % TEXT,
+    }),
+    # ('Section 2', {
+    #     'fields': ('category',)
+    # })
+    )
 
   def active(self, obj): 
     return obj.is_active == 1
