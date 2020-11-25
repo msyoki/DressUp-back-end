@@ -10,7 +10,7 @@ admin.site.register(Post)
 
 admin.site.unregister(Group)
 
-admin.site.site_header = 'Login to DressUp Seller Dashboard'
+admin.site.site_header = 'DressUp Admin Dashboard'
 admin.site.site_title = 'Welcome to DressUp Admin Dashboard'
 admin.site.index_title = 'DressUp Portal'
 
